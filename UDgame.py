@@ -149,7 +149,7 @@ class UpDownGame(QWidget):
         else:
             self.numberRange = 200
 
-        self.number.getRandomNumber(self.numberRange)
+        self.guess = Guess(self.number.getRandomNumber(self.numberRange))
         self.messageBox.setText("Enter Number (1~{})" .format(self.numberRange))
 
 

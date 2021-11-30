@@ -1,7 +1,7 @@
 from PyQt5 import QtGui
 from PyQt5.QtCore import Qt
 from PyQt5.QtWidgets import QApplication, QWidget
-from PyQt5.QtWidgets import QLayout, QGridLayout, QHBoxLayout
+from PyQt5.QtWidgets import QGridLayout, QHBoxLayout
 from PyQt5.QtWidgets import QTextEdit, QLineEdit, QToolButton, QLabel
 
 from life import Life
@@ -98,6 +98,11 @@ class UpDownGame(QWidget):
         self.numberInput.clear()
 
     def guessClicked(self):
+        # GameOver set text
+        if self.gameOver == True:
+            self.messageBox.setText("GameOver")
+            return
+        
         try:
             guessedNumber = int(self.numberInput.text())
         except:
@@ -107,11 +112,6 @@ class UpDownGame(QWidget):
 
         # Clear numberInput
         self.numberInput.clear()
-
-        # GameOver set text
-        if self.gameOver == True:
-            self.messageBox.setText("GameOver")
-            return
 
         # if guessedNumber out of range
         if guessedNumber > self.numberRange or guessedNumber < 1:
